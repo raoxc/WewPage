@@ -1,320 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<title>Official Hacker</title>
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
-
-<style>
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body */
-body {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Poppins", sans-serif;
-  color: #e0e0e0;
-  padding: 20px;
-  overflow: hidden;
-  position: relative;
-  background: black;
-}
-
-/* Canvas Background (Matrix Effect) */
-#matrixCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  z-index: 0;
-}
-
-/* Main Box */
-.main-box {
-  width: 100%;
-  max-width: 900px;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(14px);
-  border-radius: 25px;
-  padding: 50px 40px;
-  box-shadow: 0 0 60px rgba(0, 255, 200, 0.4);
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  position: relative;
-  z-index: 1;
-  border: 1px solid rgba(0,255,255,0.2);
-}
-
-/* Profile */
-.profile {
-  text-align: center;
-}
-.profile h1 {
-  font-family: "Rajdhani", sans-serif;
-  font-size: 3.8em;
-  color: #00ffff;
-  margin-bottom: 10px;
-  text-shadow: 0 0 20px #00ffff, 0 0 40px #00ccff, 0 0 60px #00ffaa;
-  letter-spacing: 2px;
-  animation: neonPulse 1.6s infinite alternate;
-}
-.profile p {
-  font-size: 1.3em;
-  color: #c8fcee;
-  line-height: 1.7;
-}
-
-/* Neon Pulse Animation */
-@keyframes neonPulse {
-  from { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ccff; }
-  to { text-shadow: 0 0 25px #00ffff, 0 0 50px #00ccff, 0 0 70px #00ffaa; }
-}
-
-/* User List */
-.list {
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(0,255,255,0.2);
-  box-shadow: inset 0 0 20px rgba(0,255,255,0.2);
-}
-.list h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 2.4em;
-  color: #00ffff;
-  text-shadow: 0 0 15px #00ffff, 0 0 30px #00ccff;
-  font-family: "Rajdhani", sans-serif;
-}
-
-/* User Cards */
-.user-list {
-  max-height: 500px;
-  overflow-y: auto;
-  padding-right: 10px;
-}
-.user-card {
-  background: rgba(0,0,0,0.7);
-  border-radius: 18px;
-  padding: 22px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(0,255,200,0.3);
-  transition: all 0.35s ease;
-  position: relative;
-}
-.user-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 0 30px #00ffff80, inset 0 0 10px #00ffff30;
-}
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-.card-header strong {
-  font-family: "Rajdhani", sans-serif;
-  font-size: 1.4em;
-  color: #00ffff;
-}
-
-/* Labels & Values */
-.label {
-  font-weight: 600;
-  color: #FFD700;
-  font-size: 1.05em;
-}
-.value {
-  font-weight: 600;
-  color: #ffffff;
-  font-size: 1.05em;
-}
-
-/* Copy Button */
-.copy-btn {
-  background: #00ffff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-size: 0.9em;
-  cursor: pointer;
-  color: black;
-  font-weight: bold;
-  transition: 0.3s;
-  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ccff;
-}
-.copy-btn:hover {
-  background: #00ccff;
-  color: white;
-  transform: scale(1.08);
-}
-
-/* Button Group */
-.btn-group {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-}
-.btn {
-  flex: 1;
-  padding: 22px 0;
-  border-radius: 25px;
-  font-weight: 700;
-  background: rgba(0,0,0,0.8);
-  color: #00ffff;
-  text-decoration: none;
-  font-size: 1.6em;
-  border: 2px solid #00ffff;
-  text-align: center;
-  box-shadow: 0 0 25px #00ffff80, 0 0 50px #00ccff60;
-  transition: 0.35s ease;
-}
-.btn:hover {
-  transform: translateY(-3px) scale(1.06);
-  box-shadow: 0 0 40px #00ffff, 0 0 80px #00ccff;
-  color: #fff;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .main-box { padding: 30px 20px; }
-  .profile h1 { font-size: 2.4em; }
-  .profile p { font-size: 1.05em; }
-  .btn { font-size: 1.2em; padding: 16px 0; }
-  .user-card { padding: 18px; font-size: 0.95em; }
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Upload & Run Python on Phone Server</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; padding: 18px; max-width: 720px; margin: auto; }
+    label{display:block; margin-top:10px;}
+    input[type="text"], input[type="file"]{width:100%;}
+    button{margin-top:12px; padding:8px 12px;}
+    pre { background:#f3f3f3; padding:10px; overflow:auto; max-height:260px; }
+    .status {margin-top:10px; font-size:0.95rem;}
+  </style>
 </head>
-
 <body>
-<!-- Matrix Canvas Background -->
-<canvas id="matrixCanvas"></canvas>
+  <h2>Upload & Run (.py) — Phone Server</h2>
 
-<div class="main-box">
-  <!-- Profile -->
-  <div class="profile">
-    <h1>TELEGRAM</h1>
-    <p>🛡 Cyber Security | Penetration Testing | Bot Dev<br>
-       ⚡ Automations & Coding Enthusiast<br>
-       🚀 Exploring the Digital World</p>
-  </div>
+  <!-- ====== CONFIG: Set your server URL here ====== -->
+  <script>
+    // Set this to your phone server address (include http:// or https:// and port if any)
+    const SERVER_URL = "http://192.168.1.5:8000"; // <-- change this to your server IP:port
+  </script>
+  <!-- ============================================== -->
 
-  <!-- User List -->
-  <div class="list">
-    <h2>User Information</h2>
-    <div class="user-list">
-      <div class="user-card">
-        <div class="card-header">
-          <strong>Pari</strong>
-          <button class="copy-btn">Copy</button>
-        </div>
-        <div><span class="label">Username:</span> <span class="value">@PARI_ODIAGIRL</span></div>
-        <div><span class="label">Number:</span> <span class="value">+919583416774</span></div>
-        <div><span class="label">User ID:</span> <span class="value">1875995639</span></div>
-      </div>
+  <form id="uploadForm">
+    <label>Server URL:
+      <input type="text" id="serverUrlInput" value="" placeholder="Optional: change before upload">
+    </label>
 
-      <div class="user-card">
-        <div class="card-header">
-          <strong>Bob</strong>
-          <button class="copy-btn">Copy</button>
-        </div>
-        <div><span class="label">Username:</span> <span class="value">@bob</span></div>
-        <div><span class="label">Number:</span> <span class="value">+1 555 666 7777</span></div>
-        <div><span class="label">User ID:</span> <span class="value">987654</span></div>
-      </div>
+    <label>Upload token (same as UPLOAD_TOKEN on server):
+      <input type="text" id="token" value="" placeholder="Enter your upload token">
+    </label>
 
-      <div class="user-card">
-        <div class="card-header">
-          <strong>Charlie</strong>
-          <button class="copy-btn">Copy</button>
-        </div>
-        <div><span class="label">Username:</span> <span class="value">@charlie</span></div>
-        <div><span class="label">Number:</span> <span class="value">+91 99999 88888</span></div>
-        <div><span class="label">User ID:</span> <span class="value">112233</span></div>
-      </div>
-    </div>
-  </div>
+    <label>Choose .py file:
+      <input type="file" id="fileInput" accept=".py" required>
+    </label>
 
-  <!-- Buttons -->
-  <div class="btn-group">
-    <a class="btn" href="https://t.me/raoxc" target="_blank">Owner</a>
-    <a class="btn" href="https://t.me/DevLabOh" target="_blank">Support</a>
-  </div>
-</div>
+    <button type="submit">Upload & Run</button>
+  </form>
 
-<!-- Copy Script -->
-<script>
-document.querySelectorAll(".copy-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const card = btn.closest(".user-card");
-    const text = Array.from(card.querySelectorAll(".label, .value"))
-                      .map(el => el.textContent)
-                      .join(" | ");
-    navigator.clipboard.writeText(text).then(() => {
-      btn.textContent = "✔ Copied";
-      setTimeout(() => btn.textContent = "Copy", 1500);
-    });
-  });
-});
+  <div class="status" id="status"></div>
+  <h3>Debug / Response</h3>
+  <pre id="log"></pre>
 
-/* MATRIX BACKGROUND EFFECT */
-const canvas = document.getElementById("matrixCanvas");
-const ctx = canvas.getContext("2d");
+  <script>
+    (function(){
+      // initialize server url input with default
+      const defaultServer = typeof SERVER_URL !== "undefined" ? SERVER_URL : "";
+      const serverUrlInput = document.getElementById('serverUrlInput');
+      serverUrlInput.value = defaultServer;
 
-// Set canvas full screen
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+      const statusEl = document.getElementById('status');
+      const logEl = document.getElementById('log');
 
-// Characters
-const letters = "アァイィウヴエェオカガキギクグケゲコゴサザシジスズセゼソゾタダチッヂツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-const lettersArray = letters.split("");
+      function log(msg){
+        logEl.textContent += msg + "\n";
+      }
 
-// Font size
-const fontSize = 16;
-const columns = canvas.width / fontSize;
+      async function uploadAndRun(serverUrl, file, token){
+        statusEl.textContent = "Uploading file to " + serverUrl + "/upload ...";
+        log("Uploading file: " + (file ? file.name : "(no file)"));
 
-// Drops
-const drops = [];
-for (let x = 0; x < columns; x++) drops[x] = 1;
+        const form = new FormData();
+        form.append('file', file);
+        form.append('token', token || "");
 
-// Draw function
-function draw() {
-  ctx.fillStyle = "rgba(0,0,0,0.08)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // send upload
+        let uploadResponse;
+        try {
+          uploadResponse = await fetch(serverUrl + "/upload", {
+            method: 'POST',
+            body: form,
+            redirect: 'follow' // follow redirect to index
+          });
+        } catch (err) {
+          statusEl.textContent = "Network error during upload: " + err;
+          log("Upload error: " + err);
+          return;
+        }
 
-  ctx.fillStyle = "#0F0";
-  ctx.font = fontSize + "px monospace";
+        log("Upload HTTP status: " + uploadResponse.status + " (" + uploadResponse.statusText + ")");
+        statusEl.textContent = "Upload complete. Looking for run link...";
 
-  for (let i = 0; i < drops.length; i++) {
-    const text = lettersArray[Math.floor(Math.random() * lettersArray.length)];
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        // Now fetch index page and try to find the newest /run/<name> link.
+        let indexText;
+        try {
+          const idxResp = await fetch(serverUrl + "/");
+          indexText = await idxResp.text();
+        } catch (err) {
+          statusEl.textContent = "Failed to fetch index page: " + err;
+          log("Index fetch error: " + err);
+          return;
+        }
 
-    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-      drops[i] = 0;
-    }
-    drops[i]++;
-  }
-}
+        // Heuristic: find all occurrences of /run/<filename> in the HTML and pick the last one.
+        // Matches href="/run/<something>" or /run/<something>"
+        const runRegex = /\/run\/([A-Za-z0-9_\-\.%]+)"/g;
+        let match;
+        let last = null;
+        while ((match = runRegex.exec(indexText)) !== null) {
+          last = match[1];
+        }
 
-setInterval(draw, 35);
+        if (!last) {
+          // alternative: try to find links like href='/run/<name>' with single quotes
+          const runRegex2 = /\/run\/([A-Za-z0-9_\-\.%]+)'/g;
+          while ((match = runRegex2.exec(indexText)) !== null) {
+            last = match[1];
+          }
+        }
 
-// Resize handler
-window.addEventListener("resize", () => {
-  canvas.height = window.innerHeight;
-  canvas.width = window.innerWidth;
-});
-</script>
+        if (!last) {
+          statusEl.textContent = "Unable to detect run link from server index. Check server index page manually.";
+          log("Index HTML excerpt:\n" + indexText.slice(0, 1000));
+          return;
+        }
+
+        // decode filename if URL-encoded
+        const decoded = decodeURIComponent(last);
+        const runUrl = serverUrl.replace(/\/$/, "") + "/run/" + encodeURIComponent(last);
+
+        statusEl.innerHTML = `Found run file <b>${decoded}</b>. Opening run URL...`;
+        log("Detected run filename: " + decoded);
+        log("Opening: " + runUrl);
+
+        // Open run URL in new tab/window to show output
+        window.open(runUrl, '_blank');
+      }
+
+      document.getElementById('uploadForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        logEl.textContent = "";
+        const fileInput = document.getElementById('fileInput');
+        const token = document.getElementById('token').value.trim();
+        const serverUrl = (document.getElementById('serverUrlInput').value || defaultServer).trim();
+
+        if (!serverUrl) {
+          statusEl.textContent = "Please set SERVER URL (phone IP and port).";
+          return;
+        }
+        if (!fileInput.files || fileInput.files.length === 0) {
+          statusEl.textContent = "Please choose a .py file to upload.";
+          return;
+        }
+        if (!token) {
+          statusEl.textContent = "Please enter upload token.";
+          return;
+        }
+
+        uploadAndRun(serverUrl, fileInput.files[0], token);
+      });
+
+    })();
+  </script>
 </body>
 </html>
